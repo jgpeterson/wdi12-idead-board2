@@ -17,10 +17,11 @@ connection.on('error', (err) => {
     console.log('MongoDB Error: ', err)
 })
 
+app.use(express.static(`${__dirname}/client/build`))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    res.send('Hello World')
+        res.sendFile(`${__dirname}/client/build/index.html`)
 })
 
 const PORT = process.env.PORT || 3001
