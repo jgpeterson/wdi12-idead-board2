@@ -12,6 +12,16 @@ catch (err) {
 }
 })
 
+router.get('/:id', async (req, res) => {
+try {
+   const user = await User.findById(req.params.id)
+   res.json(user)
+} 
+catch (err) {
+    res.send(err)
+}
+})
+
 router.post('/', async (req, res) => {
     try {
     const newUser = new User(req.body.user)
